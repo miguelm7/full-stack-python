@@ -3,24 +3,35 @@
 import reflex as rx
 
 from rxconfig import config
+from .ui.base import base_page
 
 
 class State(rx.State):
     """The app state."""
+    label : str = "Welcome to Reflex!"
 
-    ...
+    def handle_title_input_change(self, val: str):
+        self.label = val
+
+    def did_click(self):
+        print("hello world, did click")
 
 
 def index() -> rx.Component:
     # Welcome Page (Index)
-    return rx.container(
-        rx.color_mode.button(position="top-right"),
+    # return base_page("abc")
+    return base_page(
         rx.vstack(
-            rx.heading("Welcome to Reflex!", size="9"),
+            rx.heading(State.label, size="9"),
             rx.text(
                 "Get started by editing ",
                 rx.code(f"{config.app_name}/{config.app_name}.py"),
                 size="5",
+            ),
+            rx.input(
+                default_value=State.label,
+                on_click=State.did_click,
+                on_change=State.handle_title_input_change
             ),
             rx.link(
                 rx.button("Check out our docs!"),
@@ -31,7 +42,6 @@ def index() -> rx.Component:
             justify="center",
             min_height="85vh",
         ),
-        rx.logo(),
     )
 
 
