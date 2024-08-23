@@ -20,8 +20,8 @@ class State(rx.State):
 def index() -> rx.Component:
     # Welcome Page (Index)
     # return base_page("abc")
-    return base_page(
-        rx.vstack(
+
+    my_child = rx.vstack(
             rx.heading(State.label, size="9"),
             rx.text(
                 "Get started by editing ",
@@ -41,8 +41,12 @@ def index() -> rx.Component:
             spacing="5",
             justify="center",
             min_height="85vh",
-        ),
-    )
+            # text_align="center",
+            align="center",
+            id="my-child"
+        )
+
+    return base_page(my_child)
 
 
 app = rx.App()
