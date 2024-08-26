@@ -7,6 +7,7 @@ from .ui.base import base_page
 # from .pages.about import about_page
 
 from . import pages
+from . import navigation
 
 
 class State(rx.State):
@@ -40,7 +41,7 @@ def index() -> rx.Component:
             # rx.button("About us",on_click=rx.redirect("/about")),
             rx.link( # esta forma es mejor que el on click, permite copiar el enlace, etc...
                 rx.button("About us"),
-                href="/about",
+                href=navigation.routes.ABOUT_US_ROUTE,
             ),
             spacing='5',
             justify='center',
@@ -55,5 +56,5 @@ def index() -> rx.Component:
 
 app = rx.App()
 app.add_page(index)
-app.add_page(pages.about_page, route='/about')
-app.add_page(pages.pricing_page, route='/pricing')
+app.add_page(pages.about_page, route=navigation.routes.ABOUT_US_ROUTE)
+app.add_page(pages.pricing_page, route=navigation.routes.PRICING_ROUTE)
