@@ -1,17 +1,18 @@
 
 import reflex as rx
 from ..ui.base import base_page
+
 from .. import navigation
 
-@rx.page(route=navigation.routes.PRICING_ROUTE)
-def pricing_page() -> rx.Component:
+@rx.page(route=navigation.routes.CONTACT_US_ROUTE)
+def contact_page() -> rx.Component:
     # Welcome Page (Index)
     # return base_page('abc')
 
     my_child = rx.vstack(
-            rx.heading('Pricing', size='9'),
+            rx.heading('Contact', size='9'),
             rx.text(
-                'Our Pricing'
+                'Contact us!'
             ),
             spacing='5',
             justify='center',

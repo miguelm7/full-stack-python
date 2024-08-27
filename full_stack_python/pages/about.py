@@ -1,7 +1,9 @@
 
 import reflex as rx
 from ..ui.base import base_page
+from ..import navigation
 
+@rx.page(route=navigation.routes.ABOUT_US_ROUTE)
 def about_page() -> rx.Component:
     # Welcome Page (Index)
     # return base_page('abc')
